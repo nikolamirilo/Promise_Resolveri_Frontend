@@ -1,7 +1,21 @@
 import Image from "next/image"
 import Button from "./common/Button"
 
-export default function UserProfile({ fullName, image, email }) {
+export default function UserProfile({
+  fullName,
+  image,
+  email,
+  isGuide,
+  isTourist,
+  isVerified,
+  license,
+  languages,
+  offers,
+  country,
+  description,
+  phoneNumber,
+  reviewsGrade,
+}) {
   return (
     <div
       className="bg-cover font-sans leading-normal tracking-wider text-emerald-600 antialiased"

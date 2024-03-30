@@ -1,11 +1,10 @@
 "use client"
 import Checkbox from "@/components/common/Checkbox"
-import ImageInput from "@/components/common/ImageInput"
 import MultiSelect from "@/components/common/MultiSelect"
 import SingleSelect from "@/components/common/SingleSelect"
-import { fetchData, uploadImagesToCloudinary } from "@/helpers/client"
+import { fetchData } from "@/helpers/client"
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { LuLoader2 } from "react-icons/lu"
 import data from "../../data.json"
 import Input from "../common/Input"
@@ -13,10 +12,10 @@ import TextArea from "../common/TextArea"
 
 const RegisterUser = ({ user }) => {
   const [progress, setProgress] = useState(0)
-  const imagesInput = useRef(null)
-  const [images, setImages] = useState([])
-  const [displayImages, setDisplayImages] = useState([])
-  const [files, setFiles] = useState([])
+  // const imagesInput = useRef(null)
+  // const [displayImages, setDisplayImages] = useState([])
+  // const [images, setImages] = useState([])
+  // const [files, setFiles] = useState([])
   const [languagesInput, setLanguagesInput] = useState([])
   const countryInput = useRef(null)
   const phoneInput = useRef(null)
@@ -28,58 +27,57 @@ const RegisterUser = ({ user }) => {
   const isVerifiedInput = useRef(null)
   const licenseInput = useRef(null)
 
-  const handleInputImageChange = async () => {
-    setFiles((prevFiles) => [...prevFiles, ...imagesInput?.current?.files])
-    const imagesInputFiles = imagesInput?.current?.files
-    if (imagesInputFiles) {
-      const newImages = await Promise.all(
-        Array.from(imagesInputFiles).map((file) => {
-          return new Promise((resolve) => {
-            const reader = new FileReader()
-            reader.readAsDataURL(file)
-            reader.onload = () => {
-              resolve(reader.result)
-            }
-          })
-        })
-      )
-      setDisplayImages((prevImages) => [...prevImages, ...newImages])
-    }
-  }
+  // const handleInputImageChange = async () => {
+  //   setFiles((prevFiles) => [...prevFiles, ...imagesInput?.current?.files])
+  //   const imagesInputFiles = imagesInput?.current?.files
+  //   if (imagesInputFiles) {
+  //     const newImages = await Promise.all(
+  //       Array.from(imagesInputFiles).map((file) => {
+  //         return new Promise((resolve) => {
+  //           const reader = new FileReader()
+  //           reader.readAsDataURL(file)
+  //           reader.onload = () => {
+  //             resolve(reader.result)
+  //           }
+  //         })
+  //       })
+  //     )
+  //     setDisplayImages((prevImages) => [...prevImages, ...newImages])
+  //   }
+  // }
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       setProgress(50)
       // Checks for files
-      if (!files) {
-        console.log("No file MultiSelected")
-      }
-      if (files) {
-        await uploadImagesToCloudinary(files, images)
-        if (user) {
-          const uploadData = {
-            uid: user?.uid,
-            fullName: user.fullName,
-            image: images.length > 0 ? images[0] : user.image,
-            email: user.email,
-            country: countryInput.current.value,
-            phoneNumber: phoneInput.current.value,
-            age: ageInput.current.value,
-            languages: languagesInput,
-            description: descriptionInput.current.value,
-            isGuide: isGuideInput.current.checked,
-            isTourist: isTouristInput.current.checked,
-            gender: genderInput.current.value,
-            isVerified: isVerifiedInput.current.checked,
-            license: licenseInput.current.value,
-          }
-          const res = await fetchData(`/User`, {
-            method: "PUT",
-            body: JSON.stringify(uploadData),
-          })
-          console.log(res)
-          setProgress(100)
+      // if (!files) {
+      //   console.log("No file MultiSelected")
+      // }
+      // if (files) {
+      //   await uploadImagesToCloudinary(files, images)
+      if (user) {
+        const uploadData = {
+          uid: user?.uid,
+          fullName: user.fullName,
+          image: user.image,
+          email: user.email,
+          country: countryInput.current.value,
+          phoneNumber: phoneInput.current.value,
+          age: ageInput.current.value,
+          languages: languagesInput,
+          description: descriptionInput.current.value,
+          isGuide: isGuideInput.current.checked,
+          isTourist: isTouristInput.current.checked,
+          gender: genderInput.current.value,
+          isVerified: isVerifiedInput.current.checked,
+          license: licenseInput.current.value,
         }
+        const res = await fetchData(`/User`, {
+          method: "PUT",
+          body: JSON.stringify(uploadData),
+        })
+        console.log(res)
+        setProgress(100)
       }
     } catch (err) {
       console.log(err)
@@ -91,11 +89,11 @@ const RegisterUser = ({ user }) => {
     { value: "Female", label: "Female" },
   ]
 
-  useEffect(() => {
-    if (user) {
-      setDisplayImages((prevImages) => [...prevImages, ...[user.image]])
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (user) {
+  //     setDisplayImages((prevImages) => [...prevImages, ...[user.image]])
+  //   }
+  // }, [])
 
   return (
     <div className="flex items-center justify-center" id="order">
@@ -166,7 +164,7 @@ const RegisterUser = ({ user }) => {
             <Checkbox inputRef={isTouristInput} name="is-tourist" label="Is Tourist?" />
             <Checkbox inputRef={isVerifiedInput} name="is-verified" label="Is Verified?" />
             <Input inputRef={licenseInput} label="License:" name="license" isRequired={false} />
-            {displayImages.length > 0 ? (
+            {/* {displayImages.length > 0 ? (
               <div
                 className="relative flex h-fit min-h-[10rem] w-full flex-row flex-wrap items-center justify-center gap-1 rounded-lg bg-cover bg-center py-6  md:border
               md:border-violet-700">
@@ -193,7 +191,7 @@ const RegisterUser = ({ user }) => {
                 handleInputImageChange={handleInputImageChange}
                 title="Upload profile image"
               />
-            )}
+            )} */}
 
             <div className="mt-3 flex justify-center">
               <button

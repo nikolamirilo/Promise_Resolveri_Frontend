@@ -1,5 +1,5 @@
-“use client”;
-import React, { useState } from 
-import OpenAI from 
-‘react’;
-‘openai’;
+const page = () => {
+  return <div>page</div>
+}
+
+export default page
