@@ -4,6 +4,7 @@ import MultiSelect from "@/components/common/MultiSelect"
 import SingleSelect from "@/components/common/SingleSelect"
 import { fetchData } from "@/helpers/client"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { useRef, useState } from "react"
 import { LuLoader2 } from "react-icons/lu"
 import data from "../../data.json"
@@ -21,11 +22,11 @@ const RegisterUser = ({ user }) => {
   const phoneInput = useRef(null)
   const descriptionInput = useRef(null)
   const isGuideInput = useRef(null)
-  const isTouristInput = useRef(null)
   const ageInput = useRef(null)
   const genderInput = useRef(null)
   const isVerifiedInput = useRef(null)
   const licenseInput = useRef(null)
+  const router = useRouter()
 
   // const handleInputImageChange = async () => {
   //   setFiles((prevFiles) => [...prevFiles, ...imagesInput?.current?.files])
@@ -67,7 +68,6 @@ const RegisterUser = ({ user }) => {
           languages: languagesInput,
           description: descriptionInput.current.value,
           isGuide: isGuideInput.current.checked,
-          isTourist: isTouristInput.current.checked,
           gender: genderInput.current.value,
           isVerified: isVerifiedInput.current.checked,
           license: licenseInput.current.value,
@@ -78,6 +78,7 @@ const RegisterUser = ({ user }) => {
         })
         console.log(res)
         setProgress(100)
+        router.push("/")
       }
     } catch (err) {
       console.log(err)
@@ -161,7 +162,6 @@ const RegisterUser = ({ user }) => {
               isRequired={false}
             />
             <Checkbox inputRef={isGuideInput} name="is-guide" label="Is Guide?" />
-            <Checkbox inputRef={isTouristInput} name="is-tourist" label="Is Tourist?" />
             <Checkbox inputRef={isVerifiedInput} name="is-verified" label="Is Verified?" />
             <Input inputRef={licenseInput} label="License:" name="license" isRequired={false} />
             {/* {displayImages.length > 0 ? (

@@ -9,6 +9,7 @@ const nextConfig = {
       { hostname: "unsplash.com" },
       { hostname: "th.bing.com" },
       { hostname: "i.pinimg.com" },
+      { hostname: "cdn3.iconfinder.com" },
     ],
   },
   swcMinify: true,

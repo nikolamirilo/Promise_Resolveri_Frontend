@@ -11,9 +11,8 @@ const UserPage = async ({ params }) => {
         fullName={user.fullName}
         email={user.email}
         image={user.image}
-        isGuide
-        isTourist
-        isVerified
+        isGuide={user.isGuide}
+        isVerified={user.isVerified}
         license={user.license}
         languages={user.languages}
         offers={user.offers}

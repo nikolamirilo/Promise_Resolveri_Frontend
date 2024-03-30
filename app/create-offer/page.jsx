@@ -53,7 +53,7 @@ const Create = () => {
       if (files) {
         await uploadImagesToCloudinary(files, images)
         const uploadData = {
-          uid: user?.id,
+          guideUid: user?.id,
           location: locationInput.current.value,
           description: descriptionInput.current.value,
           liveFee: liveFeeInput.current.value,
