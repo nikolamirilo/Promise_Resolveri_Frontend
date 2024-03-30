@@ -2,7 +2,7 @@ import OfferCard from "@/components/cards/OfferCard"
 
 const Offers = () => {
   return (
-    <div className="bg-black py-4">
+    <div className="bg-gray-900 py-4">
       <h1 className="pb-6 text-center text-4xl font-bold text-white">Offers</h1>
       <div className="flex min-h-[80vh] w-full flex-wrap items-center justify-center gap-5">
         <OfferCard

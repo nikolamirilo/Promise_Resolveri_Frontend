@@ -13,6 +13,7 @@ export default authMiddleware({
     "/test",
     "/offers",
     "/offers/:id",
+    "/api/chat",
   ],
   ignoredRoutes: ["/"],
 })

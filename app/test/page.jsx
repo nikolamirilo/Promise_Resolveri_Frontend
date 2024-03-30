@@ -1,7 +1,5 @@
-import OfferCard from "@/components/cards/OfferCard"
-
 const page = () => {
-  return <OfferCard />
+  return <div>page</div>
 }
 
 export default page

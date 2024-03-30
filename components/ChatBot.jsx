@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image"
 import { useState } from "react"
+import Chat from "./ai/Chat"
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,13 +19,9 @@ const ChatBot = () => {
               X
             </span>
           </div>
-          <embed
-            type="text/html"
-            src="https://chatbot-gpt-turbo.vercel.app/"
-            className="z-50 h-[75vh] w-[99.8vw] bg-[#09090B] md:h-[65vh] md:w-[30vw] md:min-w-[400px]"
-            width="500"
-            height="800"
-          />
+          <div className="z-50 h-[75vh] w-[99.8vw] bg-[#09090B] md:h-[65vh] md:w-[30vw] md:min-w-[400px]">
+            <Chat />
+          </div>
         </div>
       ) : (
         <Image
