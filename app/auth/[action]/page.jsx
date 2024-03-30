@@ -1,20 +1,20 @@
-import { SignIn, SignUp } from "@clerk/nextjs";
+import { SignIn, SignUp } from "@clerk/nextjs"
 
 const Auth = ({ params }) => {
-  const action = params.action;
+  const action = params.action
   if (action == "sign-up") {
     return (
-      <div className="flex w-full py-10 justify-center items-center">
-        <SignUp afterSignUpUrl="/" />
+      <div className="flex w-full items-center justify-center py-10">
+        <SignUp afterSignUpUrl="/registration" />
       </div>
-    );
+    )
   } else if (action == "sign-in") {
     return (
-      <div className="flex w-full py-10 justify-center items-center">
+      <div className="flex w-full items-center justify-center py-10">
         <SignIn afterSignInUrl="/" />
       </div>
-    );
+    )
   }
-};
+}
 
-export default Auth;
+export default Auth

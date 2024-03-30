@@ -14,6 +14,11 @@ const Create = () => {
   const [images, setImages] = useState([])
   const [displayImages, setDisplayImages] = useState([])
   const [files, setFiles] = useState([])
+  const fullNameInput = useRef(null)
+  const emailInput = useRef(null)
+  const phoneInput = useRef(null)
+  const addressInput = useRef(null)
+  const cityInput = useRef(null)
 
   const handleInputImageChange = async () => {
     setFiles((prevFiles) => [...prevFiles, ...imagesInput?.current?.files])
@@ -72,14 +77,14 @@ const Create = () => {
             encType="multipart/Order-data"
             onSubmit={handleSubmit}>
             <Input
-              //   inputRef={fullNameInput}
+              inputRef={fullNameInput}
               label="Full Name:"
               name="fullName"
               isRequired={true}
               placeholder="e.g. John Doe"
             />
             <Input
-              //   inputRef={emailInput}
+              inputRef={emailInput}
               label="Email:"
               name="email"
               type="email"
@@ -87,21 +92,21 @@ const Create = () => {
               placeholder="e.g. johndoe@gmail.com"
             />
             <Input
-              //   inputRef={phoneInput}
+              inputRef={phoneInput}
               label="Phone:"
               name="phone"
               isRequired={true}
               placeholder="e.g. +3816xxxxxxxx"
             />
             <Input
-              //   inputRef={addressInput}
+              inputRef={addressInput}
               label="Address:"
               name="address"
               isRequired={true}
               placeholder="e.g. Boulevard 12"
             />
             <Input
-              //   inputRef={cityInput}
+              inputRef={cityInput}
               label="City:"
               name="city"
               isRequired={true}

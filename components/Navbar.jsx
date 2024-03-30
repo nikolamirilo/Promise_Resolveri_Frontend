@@ -77,20 +77,13 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    href={`/create`}
+                    href={`/create-offer`}
                     className="block rounded px-3 py-2 text-white hover:text-white md:p-0 md:hover:bg-transparent">
-                    Create
+                    Create Offer
                   </Link>
                 </li>
               </>
             )}
-            {/* <li>
-              <Link
-                href="/categories"
-                className="block rounded px-3 py-2 text-white hover:text-white md:p-0 md:hover:bg-transparent">
-                Categories
-              </Link>
-            </li> */}
           </ul>
         </div>
       </div>

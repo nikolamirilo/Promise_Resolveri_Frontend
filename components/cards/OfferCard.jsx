@@ -1,28 +1,29 @@
 import Image from "next/image"
 
-const OfferCard = ({ title, price }) => {
+const OfferCard = ({ title, price, fullname, image }) => {
   return (
-    <div class="w-full max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
-      <div className="relative h-80 w-full bg-cover bg-center ">
-        <Image
-          fill
-          class="rounded-t-lg object-cover object-center p-8"
-          src="https://i.pinimg.com/originals/35/94/79/3594793ee69d85ab8e82e780537fa83e.jpg"
-          alt="product image"
-        />
+    <div class="flex max-w-3xl flex-row rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
+      <div className="relative my-auto h-full min-h-80 w-96 rounded-t-lg bg-cover bg-center">
+        <Image fill class="rounded-md object-cover object-center" src={image} alt="product image" />
       </div>
-      <div class="px-5 pb-5">
-        <h5 class="py-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Apple Watch Series 7 GPS
+
+      <div class="m-5 flex flex-col items-start">
+        <h5 class="pb-4 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
           {/* {title} */}
         </h5>
-        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit obcaecati recusandae,
-          non illo repellat impedit pariatur dolores officiis ratione optio?
-          {/* {description} */}
-        </h5>
-        <div class="mb-5 mt-2.5 flex items-center">
-          <div class="flex items-center space-x-1 rtl:space-x-reverse">
+        <div className="relative h-24 w-24 rounded-full">
+          <Image
+            fill
+            class="rounded-full object-cover object-center"
+            src="https://i.pinimg.com/originals/35/94/79/3594793ee69d85ab8e82e780537fa83e.jpg"
+            alt="product image"
+          />
+        </div>
+        {/* zvezde i ocena i fullname */}
+        <div className="flex items-center justify-center pt-4">
+          {/* zvezde */}
+          <div class="flex items-center">
             <svg
               class="h-4 w-4 text-yellow-300"
               aria-hidden="true"
@@ -68,14 +69,15 @@ const OfferCard = ({ title, price }) => {
             5.0
           </span>
         </div>
-        <div class="flex items-center justify-between">
+        <h3 className="pt-2 text-xl font-semibold text-white">Ilija Trifunovic</h3>
+        <div className="flex w-full items-center justify-between">
           <span class="text-3xl font-bold text-gray-900 dark:text-white">
             $599
             {/* {price} */}
           </span>
           <a
             href="#"
-            class="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            class="self-end rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Book
           </a>
         </div>

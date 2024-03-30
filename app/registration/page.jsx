@@ -3,16 +3,19 @@ import Checkbox from "@/components/common/Checkbox"
 import ImageInput from "@/components/common/ImageInput"
 import MultiSelect from "@/components/common/MultiSelect"
 import SingleSelect from "@/components/common/SingleSelect"
-import { uploadImagesToCloudinary } from "@/helpers/client"
+import { fetchData, uploadImagesToCloudinary } from "@/helpers/client"
+import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { LuLoader2 } from "react-icons/lu"
 import Input from "../../components/common/Input"
 import TextArea from "../../components/common/TextArea"
+import data from "../../data.json"
 
 const Registration = () => {
   const [progress, setProgress] = useState(0)
   const imagesInput = useRef(null)
+  const [user, setUser] = useState(null)
   const [images, setImages] = useState([])
   const [displayImages, setDisplayImages] = useState([])
   const [files, setFiles] = useState([])
@@ -22,6 +25,7 @@ const Registration = () => {
   const descriptionInput = useRef(null)
   const isGuideInput = useRef(null)
   const isTouristInput = useRef(null)
+  const ageInput = useRef(null)
   const genderInput = useRef(null)
   const isVerifiedInput = useRef(null)
   const licenseInput = useRef(null)
@@ -56,16 +60,20 @@ const Registration = () => {
       if (files) {
         await uploadImagesToCloudinary(files, images)
         const uploadData = {
-          Country: countryInput.current.value,
-          Phone: phoneInput.current.value,
-          Languages: languagesInput,
-          Description: descriptionInput.current.value,
-          IsGuide: isGuideInput.current.checked,
-          IsTourist: isTouristInput.current.checked,
-          Gender: genderInput.current.value,
-          IsVerified: isVerifiedInput.current.checked,
-          License: licenseInput.current.value,
-          ProfileImage: images[0],
+          uid: user.uid,
+          fullName: user.fullName,
+          image: images.length > 0 ? images[0] : user.image,
+          email: user.email,
+          country: countryInput.current.value,
+          phone: phoneInput.current.value,
+          age: ageInput.current.value,
+          languages: languagesInput,
+          description: descriptionInput.current.value,
+          isGuide: isGuideInput.current.checked,
+          isTourist: isTouristInput.current.checked,
+          gender: genderInput.current.value,
+          isVerified: isVerifiedInput.current.checked,
+          license: licenseInput.current.value,
         }
         console.log(uploadData)
         setProgress(100)
@@ -75,19 +83,19 @@ const Registration = () => {
     }
   }
 
-  const languagesOptions = [
-    { value: "English", label: "English" },
-    { value: "German", label: "German" },
-  ]
   const genderOptions = [
     { value: "Male", label: "Male" },
     { value: "Female", label: "Female" },
   ]
-  const countryOptions = [
-    { value: "Serbia", label: "Serbia" },
-    { value: "France", label: "France" },
-  ]
-
+  const currUsr = useUser()
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await fetchData(`/User?uid=${currUsr?.user?.id}`, { method: "GET" })
+      setUser(res)
+      console.log(res)
+    }
+    getUser()
+  }, [])
   return (
     <div className="flex items-center justify-center" id="order">
       <div
@@ -116,7 +124,7 @@ const Registration = () => {
                 console.log(languagesInput)
               }}
               isRequired={true}
-              options={languagesOptions}
+              options={data.languages}
             />
             <SingleSelect
               label="Gender:"
@@ -130,7 +138,14 @@ const Registration = () => {
               name="country"
               selectRef={countryInput}
               isRequired={true}
-              options={countryOptions}
+              options={data.countries}
+            />
+            <Input
+              inputRef={ageInput}
+              label="Age:"
+              name="age"
+              isRequired={true}
+              placeholder="e.g. 24"
             />
             <Input
               inputRef={phoneInput}
