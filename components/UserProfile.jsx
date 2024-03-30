@@ -85,7 +85,7 @@ export default function UserProfile({
                 {!isGuide && (
                   <div className="flex items-center gap-2">
                     <FaPersonWalkingLuggage size={30} />
-                    <h2 className="text-violet-700">Guide</h2>
+                    <h2 className="text-violet-700">Guides</h2>
                   </div>
                 )}
               </div>
