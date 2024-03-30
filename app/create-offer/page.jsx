@@ -53,15 +53,15 @@ const Create = () => {
       if (files) {
         await uploadImagesToCloudinary(files, images)
         const uploadData = {
-          uid: user.id,
-          location: locationInput,
-          description: descriptionInput,
-          liveFee: liveFeeInput,
-          onlineFee: onlineFeeInput,
-          title: titleInput,
+          uid: user?.id,
+          location: locationInput.current.value,
+          description: descriptionInput.current.value,
+          liveFee: liveFeeInput.current.value,
+          onlineFee: onlineFeeInput.current.value,
+          title: titleInput.current.value,
           images,
         }
-
+        // const res = await fetchData(`/Offer`, { method: "POST", body: JSON.stringify(uploadData) })
         console.log(uploadData)
 
         setProgress(100)

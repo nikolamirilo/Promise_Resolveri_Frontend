@@ -1,9 +1,10 @@
 import Image from "next/image"
+import Button from "../common/Button"
 
 const OfferCard = ({ title, priceOnline, priceLive, fullname, image, profileImage, location }) => {
   return (
-    <div class="flex max-w-3xl flex-row items-center rounded-lg border border-gray-200 bg-white text-white shadow dark:border-gray-700 dark:bg-gray-800">
-      <div className="relative h-full min-h-96 w-96 rounded-t-lg bg-cover bg-center">
+    <div class="flex h-96 max-w-3xl flex-row items-center gap-4 rounded-lg border border-gray-200 bg-white text-white shadow dark:border-gray-700 dark:bg-gray-800">
+      <div className="relative h-full w-96 rounded-t-lg bg-cover bg-center">
         <Image
           fill
           class="rounded-s-lg object-cover object-center p-0.5"
@@ -12,7 +13,7 @@ const OfferCard = ({ title, priceOnline, priceLive, fullname, image, profileImag
         />
       </div>
 
-      <div class="m-5 flex flex-col items-start">
+      <div class="flex flex-col items-start pr-10">
         <h5 class="pb-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {title}
         </h5>
@@ -96,11 +97,10 @@ const OfferCard = ({ title, priceOnline, priceLive, fullname, image, profileImag
               </span>
             </div>
           </div>
-          <a
-            href="#"
-            class="self-end rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          <Button title="Book" />
+          {/* <button className="w-40 rounded-full bg-gray-600 px-4 py-2 font-bold text-white hover:bg-gray-700">
             Book
-          </a>
+          </button> */}
         </div>
       </div>
     </div>

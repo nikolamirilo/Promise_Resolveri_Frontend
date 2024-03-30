@@ -5,7 +5,7 @@ import MultiSelect from "@/components/common/MultiSelect"
 import SingleSelect from "@/components/common/SingleSelect"
 import { fetchData, uploadImagesToCloudinary } from "@/helpers/client"
 import Image from "next/image"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { LuLoader2 } from "react-icons/lu"
 import data from "../../data.json"
 import Input from "../common/Input"
@@ -74,7 +74,7 @@ const RegisterUser = ({ user }) => {
             license: licenseInput.current.value,
           }
           const res = await fetchData(`/User`, {
-            method: "PATCH",
+            method: "PUT",
             body: JSON.stringify(uploadData),
           })
           console.log(res)
@@ -90,6 +90,12 @@ const RegisterUser = ({ user }) => {
     { value: "Male", label: "Male" },
     { value: "Female", label: "Female" },
   ]
+
+  useEffect(() => {
+    if (user) {
+      setDisplayImages((prevImages) => [...prevImages, ...[user.image]])
+    }
+  }, [])
 
   return (
     <div className="flex items-center justify-center" id="order">

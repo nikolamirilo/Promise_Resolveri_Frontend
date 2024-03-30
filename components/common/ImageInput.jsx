@@ -5,7 +5,7 @@ export default function ImageInput({ imagesInput, handleInputImageChange, multip
     <div className="w-full py-2">
       <div
         id="image-preview"
-        className="mx-auto mb-4 w-full cursor-pointer items-center rounded-lg border-2 border-dashed border-gray-400 bg-gray-900 p-6 text-center">
+        className="mx-auto mb-4 w-full cursor-pointer items-center rounded-lg border-2 border-dashed border-violet-700 bg-gray-900 p-6 text-center">
         <input
           id="upload"
           type="file"

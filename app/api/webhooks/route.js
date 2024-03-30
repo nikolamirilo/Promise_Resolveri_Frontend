@@ -49,7 +49,7 @@ export async function POST(req) {
   // Get the ID and type
   const { id, image_url, first_name, last_name } = evt.data
   const eventType = evt.type
-  const fullName = `${first_name} ${last_name}`
+  const fullName = `${first_name != null && first_name} ${last_name != null && last_name}`
   const newUser = {
     uid: id,
     fullName: fullName,

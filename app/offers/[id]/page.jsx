@@ -1,3 +1,4 @@
+import Button from "@/components/common/Button"
 import Image from "next/image"
 
 const page = async ({ params }) => {
@@ -16,9 +17,7 @@ const page = async ({ params }) => {
             </div>
             <div className="-mx-2 mb-4 flex">
               <div className="w-56 px-2">
-                <button className="w-full rounded-full bg-gray-600 px-4 py-2 font-bold text-white hover:bg-gray-700">
-                  Add to Cart
-                </button>
+                <Button title="Book" />
               </div>
               {/* <div className="w-1/2 px-2">
                 <button className="w-full rounded-full bg-gray-700 px-4 py-2 font-bold text-white hover:bg-gray-600">
