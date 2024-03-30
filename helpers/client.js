@@ -7,11 +7,14 @@ export async function fetchData(path, options) {
       method,
       cache: cache || "force-cache",
       body,
+      mode: "no-cors",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
     })
+    console.log(options)
+    console.log(`${BACKEND_URL}${path}`)
     return await res.json()
   } catch (error) {
     console.error(error)

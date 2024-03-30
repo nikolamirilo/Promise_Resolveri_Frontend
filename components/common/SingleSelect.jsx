@@ -17,8 +17,12 @@ const SingleSelect = ({ selectRef, name, label, options }) => {
              focus-visible:ring-[2px]
              focus-visible:ring-violet-600 disabled:cursor-not-allowed disabled:opacity-50 group-hover/input:shadow-none">
           <option value="">Select</option>
-          {options?.map((option) => {
-            return <option value={option.value}>{option.label}</option>
+          {options?.map((option, idx) => {
+            return (
+              <option value={option.value} key={idx}>
+                {option.label}
+              </option>
+            )
           })}
         </select>
       </div>

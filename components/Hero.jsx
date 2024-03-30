@@ -33,7 +33,7 @@ export default function Hero() {
           className="h-full w-full"
           particleColor="#FFFFFF"
         />
-        <Link href="/categories">
+        <Link href="/offers">
           <button className="hover:bg-black-100 relative bottom-20 z-10 mx-auto w-[12rem] rounded border border-gray-400 bg-white px-4 py-2 text-xl font-semibold text-gray-800 shadow">
             Start journey
           </button>

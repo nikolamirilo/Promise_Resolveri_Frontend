@@ -9,8 +9,10 @@ const Offers = () => {
           title="Watch Series 7 GPS, Aluminium Case, Starlight Sport"
           image="https://i.pinimg.com/originals/35/94/79/3594793ee69d85ab8e82e780537fa83e.jpg"
           profileImage="https://i.pinimg.com/originals/35/94/79/3594793ee69d85ab8e82e780537fa83e.jpg"
-          price="$599"
+          priceOnline="5/h"
+          priceLive="10/h"
           fullname="Ilija Trifunovic"
+          location="Belgrade, Serbia"
         />
       </div>
     </div>
