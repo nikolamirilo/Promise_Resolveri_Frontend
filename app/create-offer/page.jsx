@@ -1,7 +1,8 @@
 "use client"
-import Checkbox from "@/components/common/Checkbox"
 import ImageInput from "@/components/common/ImageInput"
+import MultiSelect from "@/components/common/MultiSelect"
 import { uploadImagesToCloudinary } from "@/helpers/client"
+import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useRef, useState } from "react"
 import { LuLoader2 } from "react-icons/lu"
@@ -14,11 +15,13 @@ const Create = () => {
   const [images, setImages] = useState([])
   const [displayImages, setDisplayImages] = useState([])
   const [files, setFiles] = useState([])
-  const fullNameInput = useRef(null)
-  const emailInput = useRef(null)
-  const phoneInput = useRef(null)
-  const addressInput = useRef(null)
-  const cityInput = useRef(null)
+  const locationInput = useRef(null)
+  const descriptionInput = useRef(null)
+  const liveFeeInput = useRef(null)
+  const onlineFeeInput = useRef(null)
+  const titleInput = useRef(null)
+  const [typeInput, setTypeInput] = useState([])
+  const { user } = useUser()
 
   const handleInputImageChange = async () => {
     setFiles((prevFiles) => [...prevFiles, ...imagesInput?.current?.files])
@@ -49,6 +52,18 @@ const Create = () => {
       }
       if (files) {
         await uploadImagesToCloudinary(files, images)
+        const uploadData = {
+          uid: user.id,
+          location: locationInput,
+          description: descriptionInput,
+          liveFee: liveFeeInput,
+          onlineFee: onlineFeeInput,
+          title: titleInput,
+          images,
+        }
+
+        console.log(uploadData)
+
         setProgress(100)
         console.log(images)
       }
@@ -56,7 +71,10 @@ const Create = () => {
       console.log(err)
     }
   }
-
+  const offerTypesInput = [
+    { value: "Live", label: "Live" },
+    { value: "Online", label: "Online" },
+  ]
   return (
     <div className="flex items-center justify-center" id="order">
       <div
@@ -77,52 +95,53 @@ const Create = () => {
             encType="multipart/Order-data"
             onSubmit={handleSubmit}>
             <Input
-              inputRef={fullNameInput}
-              label="Full Name:"
-              name="fullName"
+              inputRef={titleInput}
+              label="Title:"
+              name="title"
               isRequired={true}
-              placeholder="e.g. John Doe"
+              placeholder="e.g. Tours in Paris"
             />
             <Input
-              inputRef={emailInput}
-              label="Email:"
-              name="email"
-              type="email"
+              inputRef={locationInput}
+              label="Location:"
+              name="location"
               isRequired={true}
-              placeholder="e.g. johndoe@gmail.com"
-            />
-            <Input
-              inputRef={phoneInput}
-              label="Phone:"
-              name="phone"
-              isRequired={true}
-              placeholder="e.g. +3816xxxxxxxx"
-            />
-            <Input
-              inputRef={addressInput}
-              label="Address:"
-              name="address"
-              isRequired={true}
-              placeholder="e.g. Boulevard 12"
-            />
-            <Input
-              inputRef={cityInput}
-              label="City:"
-              name="city"
-              isRequired={true}
-              placeholder="e.g. New York"
+              placeholder="e.g. Paris"
             />
             <TextArea
-              // textAreaRef={noteInput}
-              label="Note:"
-              name="note"
+              textAreaRef={descriptionInput}
+              label="Description:"
+              name="description"
               isRequired={false}
             />
-            <Checkbox
-              // ref={isPublicInput}
-              name="is-public"
-              label="Is Public"
+            <MultiSelect
+              label="Type of support:"
+              name="type"
+              multiInput={typeInput}
+              onChange={(e) => {
+                setTypeInput((prevValue) => [...prevValue, e.target.value])
+              }}
+              isRequired={true}
+              options={offerTypesInput}
             />
+            {typeInput.includes("Live") == true && (
+              <Input
+                inputRef={liveFeeInput}
+                label="Live support fee:"
+                name="live-fee"
+                isRequired={true}
+                placeholder="e.g. 100$"
+              />
+            )}
+            {typeInput.includes("Online") == true && (
+              <Input
+                inputRef={onlineFeeInput}
+                label="Online support fee:"
+                name="online-fee"
+                isRequired={true}
+                placeholder="e.g. 32"
+              />
+            )}
             {displayImages.length > 0 ? (
               <div
                 className="relative flex h-fit min-h-[10rem] w-full flex-row flex-wrap items-center justify-center gap-1 rounded-lg bg-cover bg-center py-6  md:border

@@ -1,12 +1,12 @@
-const MultiSelect = ({ selectRef, name, label, options, onChange, languagesInput }) => {
+const MultiSelect = ({ selectRef, name, label, options, onChange, multiInput }) => {
   return (
     <>
       <label htmlFor={name} className="block text-base font-medium leading-5 text-white">
         {label}
       </label>
       <div
-        className={`flex w-full flex-wrap justify-start gap-2 py-2 ${languagesInput.length < 1 && "hidden"}`}>
-        {languagesInput.map((item) => {
+        className={`flex w-full flex-wrap justify-start gap-2 py-2 ${multiInput.length < 1 && "hidden"}`}>
+        {multiInput.map((item) => {
           return <span className="rounded-full bg-violet-800/50 px-4 py-1 text-white">{item}</span>
         })}
       </div>

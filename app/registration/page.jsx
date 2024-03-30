@@ -118,7 +118,7 @@ const Registration = () => {
             <MultiSelect
               label="Languages:"
               name="languages"
-              languagesInput={languagesInput}
+              multiInput={languagesInput}
               onChange={(e) => {
                 setLanguagesInput((prevValue) => [...prevValue, e.target.value])
                 console.log(languagesInput)

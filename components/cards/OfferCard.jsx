@@ -1,22 +1,26 @@
 import Image from "next/image"
 
-const OfferCard = ({ title, price, fullname, image }) => {
+const OfferCard = ({ title, price, fullname, image, profileImage }) => {
   return (
     <div class="flex max-w-3xl flex-row rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
       <div className="relative my-auto h-full min-h-80 w-96 rounded-t-lg bg-cover bg-center">
-        <Image fill class="rounded-md object-cover object-center" src={image} alt="product image" />
+        <Image
+          fill
+          class="rounded-s-lg object-cover object-center p-0.5"
+          src={image}
+          alt="product image"
+        />
       </div>
 
       <div class="m-5 flex flex-col items-start">
         <h5 class="pb-4 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-          Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
-          {/* {title} */}
+          {title}
         </h5>
         <div className="relative h-24 w-24 rounded-full">
           <Image
             fill
             class="rounded-full object-cover object-center"
-            src="https://i.pinimg.com/originals/35/94/79/3594793ee69d85ab8e82e780537fa83e.jpg"
+            src={profileImage}
             alt="product image"
           />
         </div>
@@ -69,12 +73,9 @@ const OfferCard = ({ title, price, fullname, image }) => {
             5.0
           </span>
         </div>
-        <h3 className="pt-2 text-xl font-semibold text-white">Ilija Trifunovic</h3>
+        <h3 className="pt-2 text-xl font-semibold text-white">{fullname}</h3>
         <div className="flex w-full items-center justify-between">
-          <span class="text-3xl font-bold text-gray-900 dark:text-white">
-            $599
-            {/* {price} */}
-          </span>
+          <span class="text-3xl font-bold text-gray-900 dark:text-white">{price}</span>
           <a
             href="#"
             class="self-end rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
