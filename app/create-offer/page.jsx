@@ -50,8 +50,11 @@ const Create = () => {
       if (!files) {
         console.log("No file selected")
       }
+
+      console.log(objectImages)
       if (files) {
         await uploadImagesToCloudinary(files, images)
+        var objectImages = images.map((image) => ({ url: image }))
         const uploadData = {
           guideUid: user?.id,
           location: locationInput.current.value,
@@ -59,8 +62,9 @@ const Create = () => {
           liveFee: parseInt(liveFeeInput.current.value),
           onlineFee: parseInt(onlineFeeInput.current.value),
           title: titleInput.current.value,
-          images,
+          images: objectImages,
         }
+        console.log(uploadData)
         const res = await fetchData(`/Offer`, { method: "POST", body: JSON.stringify(uploadData) })
         console.log(res)
 

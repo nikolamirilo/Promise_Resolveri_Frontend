@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-const OfferCard = ({
+const OfferCard = async ({
   title,
   priceOnline,
   priceLive,
@@ -18,7 +18,7 @@ const OfferCard = ({
           fill
           className="rounded-s-lg object-cover object-center p-0.5"
           src={image}
-          alt="product image"
+          alt="City image"
         />
       </div>
       <div className="flex w-5/12 flex-col items-start justify-center pl-5 ">
@@ -30,12 +30,12 @@ const OfferCard = ({
           {location}
         </h4>
         <h3 className="pb-2 text-lg font-semibold text-white">{fullName}</h3>
-        <div className="relative h-24 w-24 rounded-full">
+        <div className="relative h-24 w-24 rounded-full bg-cover bg-center">
           <Image
             fill
             className="rounded-full object-cover object-center"
             src={profileImage}
-            alt="product image"
+            alt="Profile image"
           />
         </div>
         {/* zvezde i ocena i fullname */}

@@ -2,12 +2,14 @@ import Slider from "@/components/Slider"
 import Button from "@/components/common/Button"
 import { fetchData } from "@/helpers/client"
 import Image from "next/image"
+import Link from "next/link"
 
 const page = async ({ params }) => {
   const singleOffer = await fetchData(`/Offer?id=${params.id}`, {
     method: "GET",
     cache: "no-store",
   })
+  console.log(singleOffer)
   if (singleOffer)
     return (
       <div className="flex h-fit min-h-screen items-start justify-center pt-10 text-white">
@@ -29,14 +31,20 @@ const page = async ({ params }) => {
                 </div>
                 <p className="mt-2 text-lg text-gray-300">{singleOffer.description}</p>
               </div>
-              <div className="relative h-24 w-24 rounded-full">
-                <Image
-                  fill
-                  className="rounded-full object-cover object-center"
-                  src={singleOffer.guide.image}
-                  alt="User image"
-                />
+              <div className="relative my-5 h-24 w-24 rounded-full">
+                <Link href={`/users/${singleOffer.guide.uid}`}>
+                  <Image
+                    fill
+                    className="rounded-full object-cover object-center"
+                    src={singleOffer.guide.image}
+                    alt="User image"
+                  />
+                </Link>
               </div>
+
+              <Link href={`/users/${singleOffer.guide.uid}`}>
+                <Button title="View profile" />
+              </Link>
               {/* zvezde i ocena i fullname */}
               <div className="flex items-center pt-4">
                 {/* zvezde */}

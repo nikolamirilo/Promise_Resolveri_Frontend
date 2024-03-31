@@ -1,46 +1,15 @@
-"use client"
-import { Chatbox, Session } from "@talkjs/react"
-import { useCallback } from "react"
-import Talk from "talkjs"
+import Chat from "@/components/p2p-chat/Chat"
+import { fetchData } from "@/helpers/client"
+import { auth } from "@clerk/nextjs"
 
-function ChatComponent() {
-  const syncUser = useCallback(
-    () =>
-      new Talk.User({
-        id: "nina",
-        name: "Nina",
-        email: "nina@example.com",
-        photoUrl: "https://talkjs.com/new-web/avatar-7.jpg",
-        welcomeMessage: "Hi!",
-        role: "default",
-      }),
-    []
-  )
-
-  const syncConversation = useCallback((session) => {
-    // JavaScript SDK code here
-    const conversation = session.getOrCreateConversation("welcome")
-
-    const other = new Talk.User({
-      id: "frank",
-      name: "Frank",
-      email: "frank@example.com",
-      photoUrl: "https://talkjs.com/new-web/avatar-8.jpg",
-      welcomeMessage: "Hey, how can I help?",
-      role: "default",
-    })
-    conversation.setParticipant(session.me)
-    conversation.setParticipant(other)
-
-    return conversation
-  }, [])
-
+async function ChatComponent({ params }) {
+  const user = await fetchData(`/User?uid=${params.id}`, { method: "GET" })
+  const { userId } = auth()
+  const currentUser = await fetchData(`/User?uid=${userId}`, { method: "GET" })
   return (
-    <Session appId="tROJMYXC" syncUser={syncUser}>
-      <Chatbox
-        syncConversation={syncConversation}
-        style={{ width: "100%", height: "500px" }}></Chatbox>
-    </Session>
+    <div className="flex h-[80vh] w-full items-center justify-center">
+      <Chat currentUser={currentUser} user={user} />
+    </div>
   )
 }
 

@@ -7,7 +7,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false)
   const { user } = useUser()
   return (
-    <nav className="fixed top-0 z-40 w-full border-gray-200 bg-violet-700">
+    <nav className="fixed top-0 z-40 w-full bg-violet-700">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -51,7 +51,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/offers"
-                className="block rounded px-3 py-2 text-white duration-100 ease-in-out hover:scale-110 hover:text-black md:bg-transparent md:p-0"
+                className="block rounded px-3 py-2 text-white duration-100 ease-in-out hover:scale-110 md:bg-transparent md:p-0"
                 aria-current="page">
                 Offers
               </Link>
@@ -79,14 +79,14 @@ const Navbar = () => {
                 <li>
                   <Link
                     href={`/users/${user.id}`}
-                    className="block rounded px-3 py-2 text-white  duration-100 ease-in-out hover:scale-110 hover:text-black md:p-0">
+                    className="block rounded px-3 py-2 text-white  duration-100 ease-in-out hover:scale-110 md:p-0">
                     My Profile
                   </Link>
                 </li>
                 <li>
                   <Link
                     href={`/create-offer`}
-                    className="block rounded px-3 py-2 text-white duration-100 ease-in-out hover:scale-110 hover:text-black hover:text-white md:p-0">
+                    className="block rounded px-3 py-2 text-white duration-100 ease-in-out hover:scale-110 hover:text-white md:p-0">
                     Create Offer
                   </Link>
                 </li>

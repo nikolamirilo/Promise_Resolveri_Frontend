@@ -4,7 +4,6 @@ import { fetchData } from "@/helpers/client"
 const UserPage = async ({ params }) => {
   const uid = params.uid
   const user = await fetchData(`/User?uid=${uid}`, { method: "GET", cache: "no-store" })
-  console.log(user.offers)
   if (user)
     return (
       <UserProfile
@@ -22,7 +21,7 @@ const UserPage = async ({ params }) => {
         gender={user.gender}
         description={user.description}
         phoneNumber={user.phoneNumber}
-        reviewsGrade={user.reviewsGrade}
+        reviews={user.reviewsOwn}
       />
     )
 }
