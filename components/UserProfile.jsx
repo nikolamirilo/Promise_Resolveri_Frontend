@@ -90,26 +90,57 @@ export default function UserProfile({
             </div>
             {/* review */}
             <div className="flex items-center gap-2">
-              <div className="mt-2 flex flex-row-reverse">
-                {[...Array(totalStars)].map((star, index) => {
-                  return (
-                    <label key={index}>
-                      <input
-                        type="radio"
-                        name="rating"
-                        value={reviewsGrade}
-                        className="z-50 hidden"
-                      />
-                      <span
-                        className="star z-50"
-                        style={{
-                          color: reviewsGrade < index - 1 ? "#ffc107" : "#e4e5e9",
-                        }}>
-                        <FaStar size={25} />
-                      </span>
-                    </label>
-                  )
-                })}
+              <div className="mt-2 flex flex-row">
+                <label>
+                  <input type="radio" name="rating" className="z-50 hidden" />
+                  <span
+                    className="star z-50"
+                    style={{
+                      color: "#ffc107",
+                    }}>
+                    <FaStar size={25} />
+                  </span>
+                </label>
+                <label>
+                  <input type="radio" name="rating" className="z-50 hidden" />
+                  <span
+                    className="star z-50"
+                    style={{
+                      color: "#ffc107",
+                    }}>
+                    <FaStar size={25} />
+                  </span>
+                </label>
+                <label>
+                  <input type="radio" name="rating" className="z-50 hidden" />
+                  <span
+                    className="star z-50"
+                    style={{
+                      color: "#ffc107",
+                    }}>
+                    <FaStar size={25} />
+                  </span>
+                </label>
+                <label>
+                  <input type="radio" name="rating" className="z-50 hidden" />
+                  <span
+                    className="star z-50"
+                    style={{
+                      color: "#ffc107",
+                    }}>
+                    <FaStar size={25} />
+                  </span>
+                </label>
+                <label>
+                  <input type="radio" name="rating" className="z-50 hidden" />
+                  <span
+                    className="star z-50"
+                    style={{
+                      color: "gray",
+                    }}>
+                    <FaStar size={25} />
+                  </span>
+                </label>
               </div>
               {reviewsGrade && (
                 <h2 className="h-8 w-fit rounded-md bg-slate-600 px-2 text-center align-middle text-xl text-white">
@@ -129,23 +160,25 @@ export default function UserProfile({
                 <div className="text-white">{language}</div>
               ))}
             </div>
-            <div className="flex items-center gap-4">
-              <Link
-                className="duration-100 ease-in-out hover:scale-110 hover:text-white"
-                href={`whatsapp://send?abid=${phoneNumber}&text=Hello!`}>
-                <IoLogoWhatsapp size={50} />
-              </Link>
-              <Link
-                className="text-white duration-100 ease-in-out hover:scale-110 hover:text-white"
-                href={`/socket/chat/${uid}`}>
-                <div className="mt-3 flex flex-col items-center">
-                  <BsChatRightDotsFill size={40} />
+            {user.id != uid && (
+              <div className="flex items-center gap-4">
+                <Link
+                  className="duration-100 ease-in-out hover:scale-110 hover:text-white"
+                  href={`whatsapp://send?abid=${phoneNumber}&text=Hello!`}>
+                  <IoLogoWhatsapp size={50} />
+                </Link>
+                <Link
+                  className="text-white duration-100 ease-in-out hover:scale-110 hover:text-white"
+                  href={`/socket/chat/${uid}`}>
+                  <div className="mt-3 flex flex-col items-center">
+                    <BsChatRightDotsFill size={40} />
+                  </div>
+                </Link>
+                <div className="flex flex-col items-center justify-center gap-3">
+                  <Button title="Review & rate" onClick={handleClick} />
                 </div>
-              </Link>
-              <div className="flex flex-col items-center justify-center gap-3">
-                <Button title="Review & rate" onClick={handleClick} />
               </div>
-            </div>
+            )}
           </div>
           <div className="flex flex-col items-center gap-3 text-white">
             {isGuide && isVerified && (

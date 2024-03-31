@@ -4,22 +4,13 @@ const Footer = () => {
       <div className="mx-auto px-4 pt-12 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8">
         <div className="row-gap-10 mb-8 grid gap-16 lg:grid-cols-6">
           <div className="md:max-w-md lg:col-span-2">
-            <a href="/" aria-label="Go home" title="Company" className="inline-flex items-center">
-              <svg
-                className="text-teal-accent-400 w-8"
-                viewBox="0 0 24 24"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                strokeMiterlimit="10"
-                stroke="currentColor"
-                fill="none">
-                <rect x="3" y="1" width="7" height="12" />
-                <rect x="3" y="17" width="7" height="6" />
-                <rect x="14" y="1" width="7" height="6" />
-                <rect x="14" y="11" width="7" height="12" />
-              </svg>
+            <a
+              href="/"
+              aria-label="Go home"
+              title="Globe Guide"
+              className="inline-flex items-center">
               <span className="ml-2 text-xl font-bold uppercase tracking-wide text-gray-100">
-                Company
+                Globe Guide
               </span>
             </a>
             <div className="mt-4 lg:max-w-sm">

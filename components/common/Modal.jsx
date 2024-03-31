@@ -1,5 +1,6 @@
 "use client"
 import { fetchData } from "@/helpers/client"
+import { revalidateData } from "@/helpers/server"
 import { useRef, useState } from "react"
 import { FaStar } from "react-icons/fa6"
 import TextArea from "./TextArea"
@@ -25,6 +26,8 @@ const Modal = ({ title, mainText, description, guideUid, uid, closeModal, classN
         method: "POST",
         body: JSON.stringify(uploadData),
       })
+      revalidateData()
+
       closeModal()
       console.log(res)
     }

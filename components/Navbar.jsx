@@ -10,13 +10,10 @@ const Navbar = () => {
     <nav className="fixed top-0 z-40 w-full bg-violet-700">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8"
-              alt="Flowbite Logo"
-            />
-            <span className="self-center whitespace-nowrap text-2xl font-bold !text-white">FH</span>
+          <Link href="/" className="relative flex items-center space-x-3 rtl:space-x-reverse">
+            <span className="self-center whitespace-nowrap text-2xl font-bold !text-white">
+              GlobeGuide
+            </span>
           </Link>
         </div>
         <div className="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
