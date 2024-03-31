@@ -3,6 +3,7 @@ import { useUser } from "@clerk/nextjs"
 import Link from "next/link"
 import { useState } from "react"
 import { BsChatRightDotsFill, BsPersonFillCheck } from "react-icons/bs"
+import { FaStar } from "react-icons/fa"
 import { FaPersonWalkingLuggage, FaPhone } from "react-icons/fa6"
 import { GrLicense } from "react-icons/gr"
 import { IoLogoWhatsapp } from "react-icons/io"
@@ -27,13 +28,18 @@ export default function UserProfile({
   phoneNumber,
   age,
   reviews,
+  reviewsGrade,
 }) {
   const [open, setOpen] = useState(false)
+  const [totalStars, setTotalStars] = useState(5)
+  const [hover, setHover] = useState(null)
+
   const { user } = useUser()
 
   const handleClick = () => {
     setOpen(!open)
   }
+  console.log(reviewsGrade)
 
   return (
     <div className="relative bg-gray-900 bg-cover py-4 font-sans leading-normal tracking-wider text-emerald-600 antialiased">
@@ -83,52 +89,29 @@ export default function UserProfile({
               </h2>
             </div>
             {/* review */}
-            <div className="my-2 flex items-center justify-center">
-              <div className="flex items-center">
-                <svg
-                  className="h-4 w-4 text-yellow-300"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 22 20">
-                  <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                </svg>
-                <svg
-                  className="h-4 w-4 text-yellow-300"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 22 20">
-                  <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                </svg>
-                <svg
-                  className="h-4 w-4 text-yellow-300"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 22 20">
-                  <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                </svg>
-                <svg
-                  className="h-4 w-4 text-yellow-300"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 22 20">
-                  <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                </svg>
-                <svg
-                  className="h-4 w-4 text-gray-200 dark:text-gray-600"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 22 20">
-                  <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                </svg>
-              </div>
-              <span className="ms-3 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
-                4.0
-              </span>
+            <div className="mt-2 flex flex-row-reverse">
+              {[...Array(totalStars)].map((star, index) => {
+                return (
+                  <label key={index}>
+                    <input
+                      type="radio"
+                      name="rating"
+                      value={reviewsGrade}
+                      className="z-50 hidden"
+                    />
+                    <span
+                      className="star z-50"
+                      style={{
+                        color: reviewsGrade < index - 1 ? "#ffc107" : "#e4e5e9",
+                      }}
+                      onMouseEnter={() => setHover(currentRating)}
+                      onMouseLeave={() => setHover(null)}>
+                      <FaStar size={25} />
+                    </span>
+                  </label>
+                )
+              })}
+              <h2 className="text-2xl text-white">{}</h2>
             </div>
           </div>
           <p className="w-60 pt-8 text-center text-sm text-white">{description}</p>
@@ -206,10 +189,10 @@ export default function UserProfile({
                     title={offer?.title}
                     id={offer?.id}
                     image={offer?.images[0]}
-                    profileImage={user?.imageUrl}
+                    profileImage={image}
                     priceOnline={offer?.onlineFee}
                     priceLive={offer?.liveFee}
-                    fullName={user?.fullName}
+                    fullName={fullName}
                     location={offer?.location}
                   />
                 )

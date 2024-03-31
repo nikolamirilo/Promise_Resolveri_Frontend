@@ -1,6 +1,7 @@
 import Slider from "@/components/Slider"
 import Button from "@/components/common/Button"
 import { fetchData } from "@/helpers/client"
+import { currentUser } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -9,7 +10,20 @@ const page = async ({ params }) => {
     method: "GET",
     cache: "no-store",
   })
-  console.log(singleOffer)
+  const user = await currentUser()
+  console.log(user)
+  async function bookTour() {
+    "use server"
+    const res = await fetchData(`/Email`, {
+      method: "POST",
+      body: JSON.stringify({
+        subject: `Booking of tour: ${singleOffer?.title}`,
+        messageBody: `You just booked ${singleOffer?.title}.`,
+        recipients: ["nikolamirilo@gmail.com"],
+      }),
+    })
+    console.log(res)
+  }
   if (singleOffer)
     return (
       <div className="flex h-fit min-h-screen items-start justify-center pt-10 text-white">
@@ -118,9 +132,11 @@ const page = async ({ params }) => {
                 )}
               </div>
               <div className="-mx-2 mb-4 flex">
-                <div className="w-56 px-2">
-                  <Button title="Book" />
-                </div>
+                <form
+                  className="ml-5 flex flex-row items-center justify-center rounded-xl bg-violet-700 px-6 py-2 text-base font-bold text-white duration-100 ease-in-out hover:scale-[1.03] hover:bg-violet-600"
+                  action={bookTour}>
+                  <button type="submit">Book</button>
+                </form>
               </div>
             </div>
           </div>

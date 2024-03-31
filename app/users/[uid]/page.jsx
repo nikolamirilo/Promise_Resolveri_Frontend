@@ -22,6 +22,7 @@ const UserPage = async ({ params }) => {
         description={user.description}
         phoneNumber={user.phoneNumber}
         reviews={user.reviewsOwn}
+        reviewsGrade={user.reviewsGrade}
       />
     )
 }

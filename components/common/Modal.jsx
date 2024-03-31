@@ -20,11 +20,14 @@ const Modal = ({ title, mainText, description, guideUid, uid, closeModal, classN
       description: textAreaRef.current.value,
     }
     console.log(uploadData)
-    const res = await fetchData(`/Review`, { method: "POST", body: JSON.stringify(uploadData) })
-    console.log(res)
-    // if (res.ok) {
-    //   closeModal()
-    // }
+    if (uploadData) {
+      const res = await fetchData(`/api/Review`, {
+        method: "POST",
+        body: JSON.stringify(uploadData),
+      })
+      closeModal()
+      console.log(res)
+    }
   }
   return (
     <div className={`fixed z-50 max-h-full w-[90%] max-w-md text-xs md:text-xl ${className}`}>
