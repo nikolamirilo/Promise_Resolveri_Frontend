@@ -108,7 +108,7 @@ const OfferCard = ({
           </div>
           <Link
             href={`/offers/${id}`}
-            className="hover:violet-400 flex flex-row items-center justify-center rounded-xl bg-violet-700 px-4 py-2 text-lg text-white">
+            className="hover:violet-400 flex transform flex-row items-center justify-center rounded-xl bg-violet-700 px-4 py-2 text-lg text-white duration-100 ease-in-out hover:scale-110 hover:bg-gray-600">
             Details
           </Link>
         </div>

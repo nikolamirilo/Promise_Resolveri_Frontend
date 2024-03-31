@@ -51,7 +51,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/offers"
-                className="block rounded px-3 py-2 text-white md:bg-transparent md:p-0"
+                className="block rounded px-3 py-2 text-white duration-100 ease-in-out hover:scale-110 hover:text-black md:bg-transparent md:p-0"
                 aria-current="page">
                 Offers
               </Link>
@@ -79,14 +79,14 @@ const Navbar = () => {
                 <li>
                   <Link
                     href={`/users/${user.id}`}
-                    className="block rounded px-3 py-2 text-white hover:text-white md:p-0">
+                    className="block rounded px-3 py-2 text-white  duration-100 ease-in-out hover:scale-110 hover:text-black md:p-0">
                     My Profile
                   </Link>
                 </li>
                 <li>
                   <Link
                     href={`/create-offer`}
-                    className="block rounded px-3 py-2 text-white hover:text-white md:p-0">
+                    className="block rounded px-3 py-2 text-white duration-100 ease-in-out hover:scale-110 hover:text-black hover:text-white md:p-0">
                     Create Offer
                   </Link>
                 </li>

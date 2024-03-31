@@ -1,8 +1,10 @@
-import { BsPersonFillCheck } from "react-icons/bs"
+import Link from "next/link"
+import { BsChatRightDotsFill, BsPersonFillCheck } from "react-icons/bs"
 import { FaPersonWalkingLuggage, FaPhone } from "react-icons/fa6"
 import { GrLicense } from "react-icons/gr"
 import { IoLogoWhatsapp } from "react-icons/io"
 import { MdVerifiedUser } from "react-icons/md"
+import OfferCard from "./cards/OfferCard"
 
 export default function UserProfile({
   fullName,
@@ -19,14 +21,13 @@ export default function UserProfile({
   reviewsGrade,
   age,
 }) {
+  console.log(offers)
   return (
-    <div
-      className="bg-cover py-4 font-sans leading-normal tracking-wider text-emerald-600 antialiased"
-      style={{ backgroundImage: `url('https://source.unsplash.com/1L71sPT5XKc')` }}>
+    <div className="bg-gray-900 bg-cover py-4 font-sans leading-normal tracking-wider text-emerald-600 antialiased">
       {/* <!--Main Col--> */}
-      <div id="profile" className="mx-auto w-4/5 rounded-lg bg-white p-4 opacity-75 shadow-2xl">
+      <div id="profile" className="mx-auto w-4/5 rounded-lg bg-gray-100 p-4 opacity-75 shadow-2xl">
         {/* <!-- Above --> */}
-        <div className="flex flex-col items-center justify-start gap-10 sm:flex-row">
+        <div className="flex flex-col items-center justify-center gap-10 lg:flex-row">
           <div
             className="z-50 block h-48 w-48 rounded-full bg-cover bg-center shadow-xl"
             style={{ backgroundImage: `url(${image})` }}></div>
@@ -59,9 +60,9 @@ export default function UserProfile({
             </div>
             {/* review */}
             <div className="my-2 flex items-center justify-center">
-              <div class="flex items-center">
+              <div className="flex items-center">
                 <svg
-                  class="h-4 w-4 text-yellow-300"
+                  className="h-4 w-4 text-yellow-300"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -69,7 +70,7 @@ export default function UserProfile({
                   <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                 </svg>
                 <svg
-                  class="h-4 w-4 text-yellow-300"
+                  className="h-4 w-4 text-yellow-300"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -77,7 +78,7 @@ export default function UserProfile({
                   <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                 </svg>
                 <svg
-                  class="h-4 w-4 text-yellow-300"
+                  className="h-4 w-4 text-yellow-300"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -85,7 +86,7 @@ export default function UserProfile({
                   <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                 </svg>
                 <svg
-                  class="h-4 w-4 text-yellow-300"
+                  className="h-4 w-4 text-yellow-300"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -93,7 +94,7 @@ export default function UserProfile({
                   <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                 </svg>
                 <svg
-                  class="h-4 w-4 text-gray-200 dark:text-gray-600"
+                  className="h-4 w-4 text-gray-200 dark:text-gray-600"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -101,7 +102,7 @@ export default function UserProfile({
                   <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                 </svg>
               </div>
-              <span class="ms-3 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
+              <span className="ms-3 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
                 4.0
               </span>
             </div>
@@ -117,13 +118,25 @@ export default function UserProfile({
 
         <div className="flex items-center justify-evenly">
           <div className="flex flex-col items-center gap-2">
-            <div className="mb-2">
+            <div className="my-2 flex flex-col items-center">
               <h2 className="text-xl text-violet-700">Languages:</h2>
               {languages.map((language) => (
                 <div className="text-black">{language}</div>
               ))}
             </div>
-            <IoLogoWhatsapp size={50} />
+            <div className="flex items-center gap-4">
+              <Link className="duration-100 ease-in-out hover:scale-110 hover:text-black" href="">
+                <IoLogoWhatsapp size={50} />
+              </Link>
+              <Link
+                className="text-violet-700 duration-100 ease-in-out hover:scale-110 hover:text-black"
+                href="">
+                <div className="mt-5 flex flex-col items-center">
+                  <BsChatRightDotsFill size={40} />
+                  via our Chat
+                </div>
+              </Link>
+            </div>
           </div>
           <div className="flex flex-col items-center gap-3 text-violet-700">
             {isGuide && isVerified && (
@@ -158,10 +171,28 @@ export default function UserProfile({
             )}
           </div>
         </div>
+        {isGuide && (
+          <div className="my-5 flex w-full flex-col items-center justify-center gap-6">
+            <h2 className="mb-5 text-3xl font-bold text-gray-900">Offers from this Guide</h2>
+            {offers?.length > 0 &&
+              offers.map((offer, idx) => {
+                return (
+                  <OfferCard
+                    key={idx}
+                    title={offer?.title}
+                    id={offer?.id}
+                    image={offer?.images[0]}
+                    profileImage={offer?.guide?.image}
+                    priceOnline={offer?.onlineFee}
+                    priceLive={offer?.liveFee}
+                    fullName={offer?.guide?.fullName}
+                    location={offer?.location}
+                  />
+                )
+              })}
+          </div>
+        )}
       </div>
-      {offers.map((offer) => {
-        return <div className="text-white">{offer.title}</div>
-      })}
     </div>
   )
 }

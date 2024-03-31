@@ -1,3 +1,4 @@
+import { withNextVideo } from "next-video/process"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -10,9 +11,10 @@ const nextConfig = {
       { hostname: "th.bing.com" },
       { hostname: "i.pinimg.com" },
       { hostname: "cdn3.iconfinder.com" },
+      { hostname: "nariatravel.gr" },
     ],
   },
   swcMinify: true,
 }
 
-export default nextConfig
+export default withNextVideo(nextConfig)

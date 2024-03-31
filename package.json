@@ -6,14 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "node server"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.7",
     "@cloudinary/url-gen": "^1.19.0",
+    "@microsoft/signalr": "^8.0.0",
     "@radix-ui/react-label": "^2.0.2",
     "@react-spring/web": "^9.7.3",
     "@tabler/icons-react": "^3.1.0",
+    "@talkjs/react": "^0.1.7",
     "@tsparticles/engine": "^3.3.0",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.3.0",
@@ -23,6 +26,7 @@
     "mongodb": "^6.5.0",
     "next": "14.1.0",
     "next-cloudinary": "^6.3.0",
+    "next-video": "^0.17.1",
     "openai": "^4.31.0",
     "react": "^18",
     "react-dom": "^18",
@@ -30,8 +34,11 @@
     "react-loader-spinner": "^6.1.6",
     "react-speech-recognition": "^3.10.0",
     "react-tinder-card": "^1.6.4",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
     "svix": "^1.21.0",
-    "tailwind-merge": "^2.2.2"
+    "tailwind-merge": "^2.2.2",
+    "talkjs": "^0.18.0"
   },
   "devDependencies": {
     "@types/react": "18.2.66",

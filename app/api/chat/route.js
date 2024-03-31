@@ -13,7 +13,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
 export async function POST(req) {
   // Extract the `messages` from the body of the request
-  const { messages, type } = await req.json()
+  const { messages, type, language } = await req.json()
   console.log(type)
   async function assignType() {
     switch (type) {
@@ -25,6 +25,11 @@ export async function POST(req) {
         return medicalHelpAssistant
       case "language_learning_assistant":
         return languageLearningAssistant
+      case "translate_assistant":
+        return {
+          role: "translation_assistant",
+          content: `/ You are translater of messages from users. Always return just text in requested language for translation. Translate to language: ${language}`,
+        }
       default:
         return travelAssistant
     }

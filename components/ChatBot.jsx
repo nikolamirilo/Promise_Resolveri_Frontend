@@ -12,7 +12,7 @@ const ChatBot = () => {
   return (
     <div className="bg-blue absolute bottom-0 right-0 border-2 border-[#09090B]">
       {isOpen ? (
-        <div className="fixed bottom-0 right-0 z-40 animate-fade">
+        <div className="fixed bottom-0 right-0 z-40 animate-fade rounded-t-lg border-2 border-[#09090B]">
           <div className="relative z-50 flex cursor-pointer justify-end rounded-t-2xl bg-gray-900 py-2">
             <span
               onClick={handleChatOpening}
