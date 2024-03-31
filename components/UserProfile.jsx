@@ -89,29 +89,33 @@ export default function UserProfile({
               </h2>
             </div>
             {/* review */}
-            <div className="mt-2 flex flex-row-reverse">
-              {[...Array(totalStars)].map((star, index) => {
-                return (
-                  <label key={index}>
-                    <input
-                      type="radio"
-                      name="rating"
-                      value={reviewsGrade}
-                      className="z-50 hidden"
-                    />
-                    <span
-                      className="star z-50"
-                      style={{
-                        color: reviewsGrade < index - 1 ? "#ffc107" : "#e4e5e9",
-                      }}
-                      onMouseEnter={() => setHover(currentRating)}
-                      onMouseLeave={() => setHover(null)}>
-                      <FaStar size={25} />
-                    </span>
-                  </label>
-                )
-              })}
-              <h2 className="text-2xl text-white">{}</h2>
+            <div className="flex items-center gap-2">
+              <div className="mt-2 flex flex-row-reverse">
+                {[...Array(totalStars)].map((star, index) => {
+                  return (
+                    <label key={index}>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={reviewsGrade}
+                        className="z-50 hidden"
+                      />
+                      <span
+                        className="star z-50"
+                        style={{
+                          color: reviewsGrade < index - 1 ? "#ffc107" : "#e4e5e9",
+                        }}>
+                        <FaStar size={25} />
+                      </span>
+                    </label>
+                  )
+                })}
+              </div>
+              {reviewsGrade && (
+                <h2 className="h-8 w-fit rounded-md bg-slate-600 px-2 text-center align-middle text-xl text-white">
+                  {reviewsGrade}
+                </h2>
+              )}
             </div>
           </div>
           <p className="w-60 pt-8 text-center text-sm text-white">{description}</p>
@@ -199,7 +203,7 @@ export default function UserProfile({
               })}
           </div>
         )}
-        <Reviews reviews={reviews} />
+        {reviews && <Reviews reviews={reviews} />}
       </div>
     </div>
   )

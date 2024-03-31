@@ -21,7 +21,7 @@ const OfferCard = async ({
           alt="City image"
         />
       </div>
-      <div className="flex w-5/12 flex-col items-start justify-center pl-5 ">
+      <div className="flex w-5/12 flex-col items-start justify-center pl-5">
         <h5 className="pb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {title}
         </h5>
