@@ -1,5 +1,11 @@
+import Chat from "@/components/p2p-chat/Chat"
+
 const page = () => {
-  return <div>page</div>
+  return (
+    <>
+      <Chat />
+    </>
+  )
 }
 
 export default page

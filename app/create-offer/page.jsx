@@ -1,7 +1,7 @@
 "use client"
 import ImageInput from "@/components/common/ImageInput"
 import MultiSelect from "@/components/common/MultiSelect"
-import { uploadImagesToCloudinary } from "@/helpers/client"
+import { fetchData, uploadImagesToCloudinary } from "@/helpers/client"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useRef, useState } from "react"
@@ -56,16 +56,15 @@ const Create = () => {
           guideUid: user?.id,
           location: locationInput.current.value,
           description: descriptionInput.current.value,
-          liveFee: liveFeeInput.current.value,
-          onlineFee: onlineFeeInput.current.value,
+          liveFee: parseInt(liveFeeInput.current.value),
+          onlineFee: parseInt(onlineFeeInput.current.value),
           title: titleInput.current.value,
           images,
         }
-        // const res = await fetchData(`/Offer`, { method: "POST", body: JSON.stringify(uploadData) })
-        console.log(uploadData)
+        const res = await fetchData(`/Offer`, { method: "POST", body: JSON.stringify(uploadData) })
+        console.log(res)
 
         setProgress(100)
-        console.log(images)
       }
     } catch (err) {
       console.log(err)

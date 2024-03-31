@@ -1,19 +1,28 @@
 import OfferCard from "@/components/cards/OfferCard"
+import { fetchData } from "@/helpers/client"
 
-const Offers = () => {
+const Offers = async () => {
+  const offers = await fetchData("/Offer/all", { method: "GET", cache: "no-store" })
+  console.log(offers)
   return (
-    <div className="bg-gray-900 py-4">
-      <h1 className="pb-6 text-center text-4xl font-bold text-white">Offers</h1>
-      <div className="flex min-h-[80vh] w-full flex-wrap items-center justify-center gap-5">
-        <OfferCard
-          title="Watch Series 7 GPS, Aluminium Case, Starlight Sport"
-          image="https://i.pinimg.com/originals/35/94/79/3594793ee69d85ab8e82e780537fa83e.jpg"
-          profileImage="https://i.pinimg.com/originals/35/94/79/3594793ee69d85ab8e82e780537fa83e.jpg"
-          priceOnline="5/h"
-          priceLive="10/h"
-          fullname="Ilija Trifunovic"
-          location="Belgrade, Serbia"
-        />
+    <div className="bg-gray-900 py-10">
+      <h1 className="pb-16 text-center text-4xl font-bold text-white">Offers</h1>
+      <div className="flex min-h-[80vh] w-full flex-wrap items-start justify-center gap-5">
+        {offers?.map((offer, idx) => {
+          return (
+            <OfferCard
+              key={idx}
+              title={offer.title}
+              id={offer.id}
+              image={offer.images[0]}
+              profileImage={offer.guide.image}
+              priceOnline={offer.onlineFee}
+              priceLive={offer.liveFee}
+              fullName={offer.guide.fullName}
+              location={offer.location}
+            />
+          )
+        })}
       </div>
     </div>
   )

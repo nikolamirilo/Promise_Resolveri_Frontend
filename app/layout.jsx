@@ -23,7 +23,7 @@ export default async function RootLayout({ children }) {
     <ClerkProvider>
       <AI>
         <html lang="en">
-          <body className={`${mulish.className} relative h-fit min-h-screen bg-stone-100`}>
+          <body className={`${mulish.className} relative h-fit min-h-screen bg-gray-900 `}>
             <Navbar />
             <div className="z-30 min-h-[80vh] pt-16">{children}</div>
             <ChatBot />

@@ -5,10 +5,10 @@ import Image from "next/image"
 import { useState } from "react"
 
 export default function Chat() {
-  const [type, setType] = useState("insurance_assstant")
+  const [type, setType] = useState("")
   const { messages, input, handleInputChange, setInput, handleSubmit } = useChat({
     api: "/api/chat",
-    body: { type: "insurance_assstant" },
+    body: { type: type },
   })
   const { user } = useUser()
   console.log(user)
@@ -63,7 +63,7 @@ export default function Chat() {
             className="w-1/2 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
             type="submit"
             onClick={() => {
-              setInput("Hey, who are you?")
+              setInput("Hello")
               setType("travel_assistant")
             }}>
             Travel
@@ -72,7 +72,7 @@ export default function Chat() {
             className="w-1/2 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
             type="submit"
             onClick={() => {
-              setInput("Hey, who are you?")
+              setInput("Hello")
               setType("restaurants_assistant")
             }}>
             Restaurants
@@ -81,7 +81,7 @@ export default function Chat() {
             className="w-1/2 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
             type="submit"
             onClick={() => {
-              setInput("Hey, who are you?")
+              setInput("Hello")
               setType("medical_help_assistant")
             }}>
             Medical Help
@@ -90,7 +90,7 @@ export default function Chat() {
             className="w-1/2 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
             type="submit"
             onClick={() => {
-              setInput("Hey, who are you?")
+              setInput("Hello")
               setType("language_learning_assistant")
             }}>
             Language Learning
@@ -102,12 +102,12 @@ export default function Chat() {
         onSubmit={handleSubmit}
         className="absolute bottom-0 left-0 flex h-14 w-full justify-center bg-[#09090B]">
         <input
-          className="placeholder-text-violet-600 duration-400 fixed bottom-4 z-50 flex h-10 w-full max-w-lg rounded-xl border border-none border-gray-300 bg-zinc-800 p-2 px-3 py-2 text-lg text-white  shadow-[0px_0px_1px_1px_var(--violet-700)]  
-        transition file:border-0 file:bg-transparent 
-          file:text-sm file:font-medium  placeholder:text-violet-400 focus-visible:outline-none
-           focus-visible:ring-[2px]
-           focus-visible:ring-violet-600
-           disabled:cursor-not-allowed disabled:opacity-50 group-hover/input:shadow-none"
+          className="placeholder-text-violet-600 duration-400 fixed bottom-4 z-50 flex h-10 w-[95vw]  rounded-xl border border-none border-gray-300 bg-zinc-800 p-2 px-3 py-2 text-lg text-white shadow-[0px_0px_1px_1px_var(--violet-700)] transition file:border-0 file:bg-transparent  file:text-sm  
+        file:font-medium placeholder:text-violet-400 focus-visible:outline-none 
+          focus-visible:ring-[2px] focus-visible:ring-violet-600 disabled:cursor-not-allowed disabled:opacity-50
+           group-hover/input:shadow-none
+  
+           md:w-[28vw] md:min-w-[400px]"
           value={input}
           placeholder="Say something..."
           onChange={handleInputChange}
