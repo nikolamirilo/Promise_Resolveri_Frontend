@@ -56,11 +56,11 @@ export default function Chat() {
         ))
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center gap-2">
-          <h2 className="mb-2 w-1/2 text-center text-lg font-bold text-white">
+          <h2 className="mb-2 w-2/3 text-center text-lg font-bold text-white">
             For which topic would you like help from AI assistant?
           </h2>
           <button
-            className="w-1/2 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
+            className="w-2/3 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
             type="submit"
             onClick={() => {
               setInput("Hello")
@@ -69,7 +69,7 @@ export default function Chat() {
             Travel
           </button>
           <button
-            className="w-1/2 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
+            className="w-2/3 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
             type="submit"
             onClick={() => {
               setInput("Hello")
@@ -78,7 +78,7 @@ export default function Chat() {
             Restaurants
           </button>
           <button
-            className="w-1/2 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
+            className="w-2/3 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
             type="submit"
             onClick={() => {
               setInput("Hello")
@@ -87,7 +87,7 @@ export default function Chat() {
             Medical Help
           </button>
           <button
-            className="w-1/2 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
+            className="w-2/3 rounded-xl bg-violet-700 px-6 py-2 text-lg text-white"
             type="submit"
             onClick={() => {
               setInput("Hello")
