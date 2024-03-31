@@ -90,58 +90,61 @@ export default function UserProfile({
             </div>
             {/* review */}
             <div className="flex items-center gap-2">
-              <div className="mt-2 flex flex-row">
-                <label>
-                  <input type="radio" name="rating" className="z-50 hidden" />
-                  <span
-                    className="star z-50"
-                    style={{
-                      color: "#ffc107",
-                    }}>
-                    <FaStar size={25} />
-                  </span>
-                </label>
-                <label>
-                  <input type="radio" name="rating" className="z-50 hidden" />
-                  <span
-                    className="star z-50"
-                    style={{
-                      color: "#ffc107",
-                    }}>
-                    <FaStar size={25} />
-                  </span>
-                </label>
-                <label>
-                  <input type="radio" name="rating" className="z-50 hidden" />
-                  <span
-                    className="star z-50"
-                    style={{
-                      color: "#ffc107",
-                    }}>
-                    <FaStar size={25} />
-                  </span>
-                </label>
-                <label>
-                  <input type="radio" name="rating" className="z-50 hidden" />
-                  <span
-                    className="star z-50"
-                    style={{
-                      color: "#ffc107",
-                    }}>
-                    <FaStar size={25} />
-                  </span>
-                </label>
-                <label>
-                  <input type="radio" name="rating" className="z-50 hidden" />
-                  <span
-                    className="star z-50"
-                    style={{
-                      color: "gray",
-                    }}>
-                    <FaStar size={25} />
-                  </span>
-                </label>
-              </div>
+              {reviewsGrade != null && (
+                <div className="mt-2 flex flex-row">
+                  <label>
+                    <input type="radio" name="rating" className="z-50 hidden" />
+                    <span
+                      className="star z-50"
+                      style={{
+                        color: "#ffc107",
+                      }}>
+                      <FaStar size={25} />
+                    </span>
+                  </label>
+                  <label>
+                    <input type="radio" name="rating" className="z-50 hidden" />
+                    <span
+                      className="star z-50"
+                      style={{
+                        color: "#ffc107",
+                      }}>
+                      <FaStar size={25} />
+                    </span>
+                  </label>
+                  <label>
+                    <input type="radio" name="rating" className="z-50 hidden" />
+                    <span
+                      className="star z-50"
+                      style={{
+                        color: "#ffc107",
+                      }}>
+                      <FaStar size={25} />
+                    </span>
+                  </label>
+                  <label>
+                    <input type="radio" name="rating" className="z-50 hidden" />
+                    <span
+                      className="star z-50"
+                      style={{
+                        color: "#ffc107",
+                      }}>
+                      <FaStar size={25} />
+                    </span>
+                  </label>
+                  <label>
+                    <input type="radio" name="rating" className="z-50 hidden" />
+                    <span
+                      className="star z-50"
+                      style={{
+                        color: "gray",
+                      }}>
+                      <FaStar size={25} />
+                    </span>
+                  </label>
+                </div>
+              )}
+
               {reviewsGrade && (
                 <h2 className="h-8 w-fit rounded-md bg-slate-600 px-2 text-center align-middle text-xl text-white">
                   {reviewsGrade}
@@ -213,27 +216,26 @@ export default function UserProfile({
             )}
           </div>
         </div>
-        {isGuide && (
+        {isGuide && offers?.length > 0 && (
           <div className="my-5 flex w-full flex-col items-center justify-center gap-6">
             <div className="mt-5 flex w-full items-center justify-center">
               <h2 className="text-3xl font-bold text-white">Offers from {fullName}</h2>
             </div>
-            {offers?.length > 0 &&
-              offers.map((offer, idx) => {
-                return (
-                  <OfferCard
-                    key={idx}
-                    title={offer?.title}
-                    id={offer?.id}
-                    image={offer?.images[0]}
-                    profileImage={image}
-                    priceOnline={offer?.onlineFee}
-                    priceLive={offer?.liveFee}
-                    fullName={fullName}
-                    location={offer?.location}
-                  />
-                )
-              })}
+            {offers.map((offer, idx) => {
+              return (
+                <OfferCard
+                  key={idx}
+                  title={offer?.title}
+                  id={offer?.id}
+                  image={offer?.images[0]}
+                  profileImage={image}
+                  priceOnline={offer?.onlineFee}
+                  priceLive={offer?.liveFee}
+                  fullName={fullName}
+                  location={offer?.location}
+                />
+              )
+            })}
           </div>
         )}
         {reviews && <Reviews reviews={reviews} />}
